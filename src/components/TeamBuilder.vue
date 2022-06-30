@@ -31,7 +31,7 @@ export default {
             let final_teams = []
             let shuffled_members = [...this.members].sort(() => 0.5 - Math.random())
             let number_player_by_team = shuffled_members.length / this.team_number
-            number_player_by_team = Math.floor(number_player_by_team)    
+            number_player_by_team = Math.ceil(number_player_by_team)    
             for(let i = 0; i < shuffled_members.length; i += number_player_by_team) {
                 let team = shuffled_members.slice(i, i + number_player_by_team)
                 final_teams.push(team)
@@ -93,7 +93,7 @@ import TeamResult from './TeamResult.vue';
             <button v-on="is_valid ? {click: generateTeams} : {}" :disabled="!is_valid" class="btn" :class="!is_valid ? 'opacity-30 cursor-not-allowed': ''">
             C'est tipar</button>
         </div>
-        <div v-else class="bg-white shadow-md flex flex-col items-start space-y-3 p-10 rounded-md absolute top-0 left-0 w-full h-auto">
+        <div v-else class="bg-white shadow-md flex flex-col items-start space-y-3 p-10 rounded-md absolute top-0 left-0 w-full min-h-[400px] h-auto">
             <button @click="display_result=false" class="btn">Back</button>
             <TeamResult :final_teams="final_teams"></TeamResult>
         </div>
