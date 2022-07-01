@@ -64,16 +64,16 @@ import TeamResult from './TeamResult.vue';
 
 <template>
 <div class="h-full flex flex-col justify-center">
-    <div class="h-80 flex justify-center bg-gradient-to-r from-cyan-500 to-teal-500">
+    <div class="xl:h-64 h-full flex justify-center bg-gradient-to-r from-cyan-500 to-teal-500">
         <h1 class="m-16 m-15 text-4xl font-semibold text-white">Générateur d'équipe</h1>
     </div>
-    <div class="bg-white rounded-md shadow-md flex justify-center items-center w-[600px] min-h-[400px] h-auto relative m-auto bottom-36">
+    <div class="bg-white rounded-md shadow-md flex justify-center items-center xl:w-[600px] xl:min-h-[400px] h-auto w-full relative m-auto bottom-36">
         <transition name="rotate">
         <div v-if="!display_result" class="flex flex-col items-start space-y-3 p-10 rounded-md w-full h-full">
             
             <NameInput @addName="addMember"></NameInput>
             <div class="text-2xl">Listes des joueurs ({{members.length}}):</div>
-            <div class="flex flex-wrap min-h-[50px]">
+            <div class="flex flex-wrap xl:min-h-[50px] min-h-[2em]">
                 <transition-group name="fade">
                     <span 
                         v-for="member in members"
@@ -88,14 +88,22 @@ import TeamResult from './TeamResult.vue';
                     </span>
                 </transition-group>
             </div>
-            <div class="text-2xl">Nombre d'équipe souhaité : </div>
-            <TeamsCounter @update="updateTeamNumber"/>
-            <button v-on="is_valid ? {click: generateTeams} : {}" :disabled="!is_valid" class="btn" :class="!is_valid ? 'opacity-30 cursor-not-allowed': ''">
-            C'est tipar</button>
+            <div>
+                <div class="text-2xl mb-8">Nombre d'équipe souhaité : </div>
+                <TeamsCounter @update="updateTeamNumber"/>
+            </div>
+            <div class="flex w-full justify-end">
+                <button v-on="is_valid ? {click: generateTeams} : {}" :disabled="!is_valid" class="btn" :class="!is_valid ? 'opacity-30 cursor-not-allowed': ''">
+                C'est tipar</button>
+            </div>
         </div>
         <div v-else class="bg-white shadow-md flex flex-col items-start space-y-3 p-10 rounded-md absolute top-0 left-0 w-full min-h-[400px] h-auto">
-            <button @click="display_result=false" class="btn">Back</button>
-            <TeamResult :final_teams="final_teams"></TeamResult>
+            <div class="flex flex-col w-full min-h-[300px] h-auto">
+                <TeamResult :final_teams="final_teams"></TeamResult>
+            </div>
+            <div class="flex justify-end w-full">
+                <button @click="display_result=false" class="btn">Back</button>
+            </div>
         </div>
         </transition>
     </div>
