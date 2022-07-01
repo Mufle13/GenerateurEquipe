@@ -67,7 +67,7 @@ import TeamResult from './TeamResult.vue';
     <div class="xl:h-64 h-full flex justify-center bg-gradient-to-r from-cyan-500 to-teal-500">
         <h1 class="m-16 m-15 text-4xl font-semibold text-white">Générateur d'équipe</h1>
     </div>
-    <div class="bg-white rounded-md shadow-md flex justify-center items-center xl:w-[600px] xl:min-h-[400px] h-auto w-full relative m-auto bottom-36">
+    <div class="bg-white rounded-md xl:shadow-md flex justify-center items-center xl:w-[600px] xl:min-h-[400px] h-auto w-full relative m-auto bottom-36">
         <transition name="rotate">
         <div v-if="!display_result" class="flex flex-col items-start space-y-3 p-10 rounded-md w-full h-full">
             
@@ -97,7 +97,7 @@ import TeamResult from './TeamResult.vue';
                 C'est tipar</button>
             </div>
         </div>
-        <div v-else class="bg-white shadow-md flex flex-col items-start space-y-3 p-10 rounded-md absolute top-0 left-0 w-full min-h-[400px] h-auto">
+        <div v-else class="bg-white xl:shadow-md flex flex-col items-start space-y-3 p-10 rounded-md absolute top-0 left-0 w-full min-h-[400px] h-auto">
             <div class="flex flex-col w-full min-h-[300px] h-auto">
                 <TeamResult :final_teams="final_teams"></TeamResult>
             </div>
