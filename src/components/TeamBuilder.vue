@@ -28,13 +28,19 @@ export default {
             if(this.members.length == 0) {
                 return
             }
+
             let final_teams = []
             let shuffled_members = [...this.members].sort(() => 0.5 - Math.random())
-            let number_player_by_team = shuffled_members.length / this.team_number
-            number_player_by_team = Math.ceil(number_player_by_team)    
-            for(let i = 0; i < shuffled_members.length; i += number_player_by_team) {
-                let team = shuffled_members.slice(i, i + number_player_by_team)
-                final_teams.push(team)
+            for (let i = 0; i < this.team_number; i++) {
+                 final_teams.push([])
+            }
+            
+            let j = 0
+            while (j < shuffled_members.length) {
+                for (let i = 0; i < this.team_number; i++) {
+                    final_teams[i].push(shuffled_members[j])
+                    j++
+                }
             }
             this.final_teams = final_teams
             this.display_result = true

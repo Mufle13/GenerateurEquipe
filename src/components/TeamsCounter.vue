@@ -8,7 +8,7 @@
         emits: ["update"],
         methods: {
             increment() {
-                this.team_number ++
+                this.team_number += this.increment_by
                 this.$emit("update", this.team_number)
             },
             decrement() {
@@ -18,11 +18,20 @@
                 } 
             }
         },
+        incrementBy() {
+            this.count += this.increment_by
+        },
         computed: {
             canDecrement() {
                 return this.team_number >= 3 ? true : false
             }
+        },
+
+        props: {
+        increment_by: {
+            default: 1
         }
+        } 
 
     }
 </script>
