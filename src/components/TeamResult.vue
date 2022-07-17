@@ -28,7 +28,7 @@ export default {
     },
     created: function() {
         for (let i = 0; i < this.final_teams.length; i++) {
-            this.team_names_dico[i] = 'Equipe ${i }'
+            this.team_names_dico[i] = `Equipe ${i + 1}`
             this.edit[i] = false
         }
     },
